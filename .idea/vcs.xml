@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="VcsDirectoryMappings">
+    <mapping directory="$PROJECT_DIR$" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libs/DFRobot_ADS1115" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libs/GreenPonik_EC_Python" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/libs/GreenPonik_PH_Python" vcs="Git" />
+  </component>
+</project>

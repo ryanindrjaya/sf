@@ -1,0 +1,1180 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+
+    <link rel='stylesheet' href='css/bootstrap.min.css'/>
+    <link rel='stylesheet' href='css/content.css'/>
+    <link rel="stylesheet" href="dist/notifications.css" type="text/css">
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+<!--    <script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-element-bundle.min.js"></script>-->
+<style>
+    .swiper {
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper-slide {
+      text-align: center;
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+        .page {
+      display: none;
+    }
+
+    .current-page {
+      display: block;
+    }
+
+    button {
+      margin-top: 10px;
+    }
+
+    .tab {
+        display: none;
+
+    }
+
+        .tab-button {
+      cursor: pointer;
+    }
+    .tab-button.active {
+      cursor: pointer;
+        color: white;
+    }
+</style>
+</head>
+<body>
+<div  class="row fixed-top" style=" display: flex; justify-content: space-between;padding-right: 24px;">
+    <div style="margin-left: 16px;" onclick=" showArrayController()">
+        <div class=" font-logo">OS SMART <b style="color: #00FF0A">FARM</b></div>
+
+
+    </div>
+    <div style="display: flex; justify-content: center;
+    align-items: center;
+    align-content: center;">
+        <div class="labels" id="page_title"></div>
+    </div>
+
+</div>
+
+<!--<div class="swiper mySwiper">-->
+<!--    <div class="swiper-wrapper">-->
+<!--      <div class="swiper-slide" style="width: 700px;">Slide 1</div>-->
+<!--      <div class="swiper-slide" style="width: 700px;">Slide 2</div>-->
+<!--      <div class="swiper-slide" style="width: 700px;">Slide 3</div>-->
+<!--      <div class="swiper-slide">Slide 4</div>-->
+<!--      <div class="swiper-slide">Slide 5</div>-->
+<!--      <div class="swiper-slide">Slide 6</div>-->
+<!--      <div class="swiper-slide">Slide 7</div>-->
+<!--      <div class="swiper-slide">Slide 8</div>-->
+<!--      <div class="swiper-slide">Slide 9</div>-->
+<!--    </div>-->
+<!--    <div class="swiper-button-next"></div>-->
+<!--    <div class="swiper-button-prev"></div>-->
+<!--  </div>-->
+<!--<swiper-container>-->
+<!--  <swiper-slide style="height: 400px; width: 600px;">-->
+<div id="array_controller">
+    <div id="listController" class="d-inline-flex flex-nowrap flex-row mr-5">
+
+    </div>
+<!--    <div class="glass" id="controllerContainer" onclick="showDisplay('dashboard1')" style="height: 200px; width: 400px" >-->
+<!--        <b style="font-size: 20px" class="mt-4 ml-4">Controller Timur</b>-->
+<!--        <p class="ml-4" id="status_controller">Status: Active <b class="status"></b></p>-->
+<!--        <p id="testing"></p>-->
+<!--        <div class="d-flex flex-row  justify-content-around">-->
+<!--                <p>DAP <br> <b>42 DAYS</b> </p>-->
+<!--                <p>EC <br> <b>0.00</b> </p>-->
+<!--                <p>pH <br> <b>0.00</b> </p>-->
+<!--                <p>Humidity <br> <b>42 DAYS</b> </p>-->
+<!--        </div>-->
+<!--        <div class="d-flex flex-row  justify-content-around">-->
+<!--                <p>Water Temp <br> <b>0.00</b> </p>-->
+<!--                <p>Air Temp <br> <b>0.00</b> </p>-->
+<!--                <p>Pump 1 <br> <b>Off</b> </p>-->
+<!--                <p>Pump 2 <br> <b>On</b> </p>-->
+<!--        </div>-->
+<!--    </div>-->
+</div>
+<div id="dropdownController"></div>
+<div id="tabController">
+<!--    <div id="controller2" class="tab btn btn-primary"><div id="dashboard2" onclick="showDisplay('array_controller')">dashboard3</div></div>-->
+<!--    <div id="controller3" class="tab btn btn-primary"><div id="dashboard3" onclick="showDisplay('array_controller')">dashboard3</div></div>-->
+<!--    <div id="controller4" class="tab btn btn-primary"><div id="dashboard4" onclick="showDisplay('array_controller')">dashboard4</div></div>-->
+    <div id="other_controller"></div>
+</div>
+    <div id="setting_page"></div>
+
+<!--</swiper-slide>-->
+<!--  <swiper-slide>Slide 2</swiper-slide>-->
+<!--  <swiper-slide>Slide 3</swiper-slide>-->
+<!--  <swiper-slide>Slide ...</swiper-slide>-->
+<!--</swiper-container>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script>-->
+<!--<script>-->
+<!--    var swiper = new Swiper(".mySwiper", {-->
+<!--      navigation: {-->
+<!--        nextEl: ".swiper-button-next",-->
+<!--        prevEl: ".swiper-button-prev",-->
+<!--      },-->
+<!--    });-->
+<!--  </script>-->
+<script src="dist/notifications.js" type="text/javascript"></script>
+<script>
+
+    window.addEventListener('pywebviewready', function () {
+        // var container = document.getElementById('pywebview-status')
+        // container.innerHTML = '<i>pywebview</i> is ready'
+        // document.getElementById("dashboard").style.display = "";
+
+        // document.getElementById("dashboard").style.display = "block";
+        showDisplay("array_controller")
+        initialize()
+    })
+
+    function showDisplay(val) {
+        //alert("display " + val)
+        let display = [
+            {page: "array_controller", name:"Controller List"},
+
+        ]
+        for(let i=0; i < resArray.length;i++){
+            const x1 = i+1
+            display.push({page:"dashboard"+x1, name: "Dashboard"+x1},{page:"setting_date"+x1, name: "Setting Date"+x1},{page:"setting_ec"+x1, name: "Setting EC"+x1},{page:"setting_ec_all"+x1, name: "Setting EC - All DAP"+x1},{page:"setting_ec_single"+x1, name: "Setting EC - Single DAP"+x1},{page:"setting_ph"+x1, name: "Setting pH"+x1},{page:"setting_hum"+x1, name: "Setting Humidity"+x1},{page:"setting_pump"+x1, name: "Setting Pump"+x1},{page:"setting_air_temp"+x1, name: "Setting Air Temp"+x1},)
+            //{page:"qr"+x1, name: "QR Code"+x1}
+
+        }
+        //alert(JSON.stringify(display));
+
+
+        display.map(item => {
+            if (item.page === val) {
+                document.getElementById('page_title').innerText = item.name
+                document.getElementById(item.page).style.display = "block";
+            } else {
+                document.getElementById(item.page).style.display = "none";
+            }
+        })
+        // if(val === "dashboard"){
+        //     initialize()
+        // }
+
+    }
+
+    // showDisplay("dashboard")
+    //showDisplay("settings")
+
+    // showDisplay("setting_ec")
+    // showDisplay("setting_ec_all")
+
+
+    function minEc(index) {
+        let x = parseFloat(document.getElementById('ec'+index).innerText)
+        if (x > 0){
+            x = x - 0.01
+        }
+        document.getElementById('ec'+index).innerText = x.toFixed(2)
+    }
+
+    function plusEc(index) {
+        let xx = parseFloat(document.getElementById('ec'+index).innerText)
+        xx = xx + 0.01
+        document.getElementById('ec'+index).innerText = xx.toFixed(2)
+    }
+
+
+    function minHumidity(index){
+
+            let x = parseFloat(document.getElementById('fan_humidity'+index).innerText)
+            if (x > 0){
+                x = x - 1
+        }
+            document.getElementById('fan_humidity'+index).innerText = x.toFixed(2)
+
+    }
+
+    function plusHumidity(index){
+
+            let x = parseFloat(document.getElementById('fan_humidity'+index).innerText)
+            if (x < 100){
+                x = x + 1
+        }
+            document.getElementById('fan_humidity'+index).innerText = x.toFixed(2)
+
+    }
+
+
+    function minAirTemp(key,index){
+
+        if(key === "min"){
+            let x = parseFloat(document.getElementById('fan_air_temp_min'+index).innerText)
+            if (x > 0){
+                x = x - 1
+        }
+            document.getElementById('fan_air_temp_min'+index).innerText = x.toFixed(2)
+        }
+        if (key === "max"){
+            let x = parseFloat(document.getElementById('fan_air_temp_max'+index).innerText)
+            if (x > 0){
+                x = x - 1
+        }
+            document.getElementById('fan_air_temp_max'+index).innerText = x.toFixed(2)
+        }
+    }
+
+
+    function plusAirTemp(key,index){
+        if(key === "min"){
+            let x = parseFloat(document.getElementById('fan_air_temp_min'+index).innerText)
+            if (x < 100){
+                x = x + 1
+        }
+            document.getElementById('fan_air_temp_min'+index).innerText = x.toFixed(2)
+        }
+        if (key === "max"){
+            let x = parseFloat(document.getElementById('fan_air_temp_max'+index).innerText)
+            if (x < 100){
+                x = x + 1
+        }
+            document.getElementById('fan_air_temp_max'+index).innerText = x.toFixed(2)
+        }
+
+
+    }
+    function minPhDown(index){
+        let x = parseFloat(document.getElementById('ph_down'+index).innerText)
+        if (x > 0){
+            x = x - 0.01
+        }
+        document.getElementById('ph_down'+index).innerText = x.toFixed(2)
+    }
+
+    function plusPhDown(index){
+        let x = parseFloat(document.getElementById('ph_down'+index).innerText)
+        x = x + 0.01
+        document.getElementById('ph_down'+index).innerText = x.toFixed(2)
+    }
+
+    function minPhUp(index){
+        let x = parseFloat(document.getElementById('ph_up'+index).innerText)
+        if (x > 0){
+            x = x - 0.01
+        }
+        document.getElementById('ph_up'+index).innerText = x.toFixed(2)
+    }
+
+    function plusPhUp(index){
+        let x = parseFloat(document.getElementById('ph_up'+index).innerText)
+        x = x + 0.01
+        document.getElementById('ph_up'+index).innerText = x.toFixed(2)
+    }
+
+
+    function minDuration(index){
+        let x = parseFloat(document.getElementById('peristaltic_pump_duration'+index).innerText)
+        if (x > 0){
+            x = x - 0.01
+        }
+        document.getElementById('peristaltic_pump_duration'+index).innerText = x.toFixed(2)
+    }
+
+
+    function plusDuration(index){
+        let x = parseFloat(document.getElementById('peristaltic_pump_duration'+index).innerText)
+        if(x<60){
+            x = x + 0.01
+        }
+        document.getElementById('peristaltic_pump_duration'+index).innerText = x.toFixed(2)
+    }
+
+
+    function minCheckingPeriod(index){
+        let x = parseFloat(document.getElementById('peristaltic_pump_period'+index).innerText)
+        if (x > 0){
+            x = x - 0.01
+        }
+        document.getElementById('peristaltic_pump_period'+index).innerText = x.toFixed(2)
+    }
+
+
+    function plusCheckingPeriod(index){
+        let x = parseFloat(document.getElementById('peristaltic_pump_period'+index).innerText)
+        if(x<60){
+            x = x + 0.01
+        }
+        document.getElementById('peristaltic_pump_period'+index).innerText = x.toFixed(2)
+    }
+
+
+    function minEcSingle(id,index){
+        let dynamicId = 'ec_hst' + index + "-" + id;
+        let element = document.getElementById(dynamicId)
+        if (element) {
+            let x = parseFloat(element.innerText);
+        if (x > 0){
+            x = x - 0.01
+        }            element.innerText = x.toFixed(2);
+         }
+         else{
+            console.log("Element with ID '" + dynamicId + "' not found.");
+
+         }
+
+    }
+
+
+        function plusEcSingle(id,index){
+        let dynamicId = 'ec_hst' + index + "-" + id;
+
+        let element = document.getElementById(dynamicId)
+        if (element) {
+            let x = parseFloat(element.innerText);
+            x = x + 0.01;
+            element.innerText = x.toFixed(2);
+         }
+         else{
+            console.log("Element with ID '" + dynamicId + "' not found.");
+
+         }
+
+    }
+
+
+    function setValue(key,index) {
+        const value = parseFloat(document.getElementById(key+index).innerText)
+        pywebview.api.setRedisValue(key, value,"/device-00"+index).then(showSetValueResponse)
+    }
+    function setDate(index){
+        const elemen = document.getElementById('start_dap'+index)
+        const dateValue = elemen.value;
+        pywebview.api.setRedisValue('start_dap', dateValue,"/device-00"+index).then(showSetValueResponse)
+
+
+    }
+    function setAirTemp(index){
+        const valueMin = document.getElementById('fan_air_temp_min'+index).innerText;
+        const valueMax = document.getElementById('fan_air_temp_max'+index).innerText;
+        pywebview.api.setRedisValue('fan_air_temp_min', valueMin,"/device-00"+index).then(showSetValueResponse)
+        pywebview.api.setRedisValue('fan_air_temp_max', valueMax,"/device-00"+index).then(showSetValueResponse)
+
+    }
+
+    function setPh(index){
+        const valueMin = document.getElementById('ph_down'+index).innerText;
+        const valueMax = document.getElementById('ph_up'+index).innerText;
+        pywebview.api.setRedisValue('ph_down', valueMin,"/device-00"+index).then(showSetValueResponse)
+        pywebview.api.setRedisValue('ph_up', valueMax,"/device-00"+index).then(showSetValueResponse)
+
+    }
+
+
+
+    function showSetValueResponse(response) {
+
+        window.createNotification({
+            closeOnClick: true,
+            displayCloseButton: false,
+            positionClass: "nfc-top-center",
+            showDuration: 3000,
+            theme: "none"
+        })({
+            title: "Info",
+            message: `${response.message}`
+        });
+    }
+
+
+
+    function convertBool(val) {
+        if (val) {
+            return "On"
+        } else {
+            return "Off"
+        }
+    }
+        var resArray = []
+    let items2 = []
+
+
+    function putArray(responsex){
+        resArray = responsex
+
+
+        // for (let i=0;i<responsex.length;i++){
+        //     resArray.push(responsex)
+        // }
+        let settingPage =""
+        let dropdown =""
+
+        for(let j=0; j < responsex.length;j++){
+            const xx= j+1;
+            //dropdown
+                dropdown += "<div  id='dropdown"+xx+"' class=\"tab mt-3\">\n" +
+                    "        <div class=\"dropdown\">\n" +
+                    "          <button class=\" glass d-flex align-items-center justify-content-center\" type=\"button\" id=\"customDropdown\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\" style=\"width: 300px; height: 30px;\">\n" +
+                    "            <b class=''>Controller-"+xx+"</b>\n" +
+                    "            <div class=\"status\"></div>\n" +
+                    "            <img src=\"images/Arrow%20-icon.png\" alt=\"\" style=\"height: 30px;\">\n" +
+                    "          </button>\n" +
+                    "          <div class=\"dropdown-menu\" aria-labelledby=\"customDropdown\">\n" +
+                    "            <!-- Dropdown content here -->\n"
+
+
+                    for (let ditem = 0; ditem < resArray.length; ditem++) {
+                        const ditems = ditem +1
+                        if(ditems !== xx)
+                        dropdown += "            <a class=\"dropdown-item\" href=\"#\" onclick='showTab("+ditems+")'>Controller "+ditems+"</a>\n"
+                    }
+
+                    dropdown +="          </div>\n" +
+                    "        </div>\n" +
+                    "      </div>"
+
+
+
+            //date setting
+            settingPage += "<div style='display: none' id='setting_date" + xx + "'>\n" +
+                    "        <div class=\"boxSetting\"></div>\n" +
+                    "\n" +
+                    "        <div class=\"boxSettingInside flex-column\" >\n" +
+                    "\n" +
+                    "            <h2 style=\"margin-right: 400px\">Date Time Settings</h2>\n" +
+                    "            <div class=\"d-flex flex-row \" style=\"margin-right: 290px\">\n" +
+                    "                <img src=\"images/Calendar.png\" class='mt-2 mr-2' style=\"height: 25px\" alt=\"\"><input id='start_dap"+xx+"' class=\"glassDate\" style=\"width: 200px\" type=\"date\" name=\"date\" >\n" +
+                    "                <div class=\"btn-secondary btn ml-4\"  onclick=\"setDate("+xx+")\"> Set Date Time</div>\n" +
+                    "\n" +
+                    "            </div>\n" +
+                    "\n" +
+                    "        </div>\n" +
+                    "            <div class=\"boxBackButton \" onclick=\"showTab("+xx+")\">\n" +
+                    "            <span>Back</span>\n" +
+                    "        </div>\n" +
+                    "\n" +
+                    "\n" +
+                    "    </div>"
+            //ec setting (option)
+            settingPage += "<div style='display: none' id=\"setting_ec"+xx+"\">\n" +
+                "        <div class=\"boxSetting\">\n" +
+                "        </div>\n" +
+                "        <div class=\"boxSettingInside\">\n" +
+                "            <div>\n" +
+
+                "                <div class=\"buttonMenu\" style=\"margin-bottom: 36px;\" onclick=\"showSetting('setting_ec_all"+xx+"')\">Set All DAP\n" +
+                "                </div>\n" +                                                                    // idk why but when generatepages(1) is gone it doesn't work
+                "                <div class=\"buttonMenu\" onclick=\"showSetting('setting_ec_single"+ xx +"');generatePages(1); generatePages("+xx+");\">Set Single DAP</div>\n" +
+                "            </div>\n" +
+                "\n" +
+                "        </div>\n" +
+                "        <div class=\"boxBackButton \" onclick=\"showTab("+xx+")\">\n" +
+                "            <span>Back</span>\n" +
+                "        </div>\n" +
+                "    </div>"
+            //setting ec all
+            settingPage += "<div id=\"setting_ec_all"+xx+"\" style='display: none;'>\n" +
+                "        <div class=\"boxSetting\">\n" +
+                "        </div>\n" +
+                "        <div class=\"boxSettingInside\">\n" +
+                "            <div class=\"\" style=\"margin-bottom: 0px\">\n" +
+                "\n" +
+                "            <h4 style=\"margin-right: 100px;\">All DAP Setting</h4>\n" +
+                "                <div class=\"btn-secondary btn\" onclick=\"setValue('ec',"+xx+")\"> Set All DAP</div>\n" +
+                "\n" +
+                "            </div>\n" +
+                "            <div class=\"buttonSwitch\" style=\"margin-right: 16px; padding-bottom: 18px;\" onclick=\"minEc("+xx+")\">\n" +
+                "                <span style=\"font-size: 42px;\">-</span>\n" +
+                "            </div>\n" +
+                "            <div class=\"buttonMenu\">\n" +
+                "                <div style=\"font-size: 42px;\" id=\"ec"+xx+"\">0.00</div>\n" +
+                "            </div>\n" +
+                "            <div class=\"buttonSwitch\" style=\"margin-left: 16px;padding-bottom: 14px;\" onclick=\"plusEc("+xx+")\">\n" +
+                "                <span style=\"font-size: 42px;\">+</span>\n" +
+                "            </div>\n" +
+                "        </div>\n" +
+                "        <div class=\"boxBackButton \" onclick=\"showSetting('setting_ec"+xx+"')\">\n" +
+                "            <span>Back</span>\n" +
+                "        </div>\n" +
+                "    </div>"
+            //setting ec single
+            
+            settingPage += "  <div style='display: none;' id=\"setting_ec_single"+xx+"\">\n" +
+                "        <div class=\"boxSetting\" style=\"height: 380px\">\n" +
+                "        </div>\n" +
+                "        <div class=\"boxSettingInside\">\n" +
+                "            <div class=\"\" style=\"margin-bottom: 0px\">\n" +
+                "\n" +
+                "            <h4 style=\"margin-right: 50px;\">Single DAP Setting</h4>\n" +
+                "                <div class=\"btn-secondary btn\" id=\"submitBtn\" onclick=\"submitDap("+xx+")\"> Set Single DAP</div>\n" +
+                "                <br>\n" +
+                "\n" +
+                "                <div class=\"btn-secondary btn mt-3\" id=\"addHstBtn\" onclick=\"addItem(0.00,"+xx+");\"> Add DAP</div>\n" +
+                "\n" +
+                "          <br>      <div class=\"btn-secondary btn mt-3\" id=\"minHstBtn\" onclick=\"minItem("+xx+")\"> Remove DAP</div>\n" +
+                "\n" +
+                "\n" +
+                "            </div>\n" +
+                "\n" +
+                "                <!--            <div class=\"buttonMenu\" style=\"margin-bottom: 36px;\">Set All DAP</div>-->\n" +
+                "        <div class=\"d-flex flex-column \" id=\"ecSingle"+xx+"\">"+"</div>\n" +
+                "\n" +
+                "\n" +
+                "        </div>\n" +
+                "        <div class=\"row\">\n" +
+                "\n" +
+                "            <div class=\"boxBackButton\" id=\"previousBtn"+xx+"\" style=\"margin-top: 50px\" onclick=\"previousPage("+xx+")\">\n" +
+                "                <span>Back</span>\n" +
+                "            </div>\n" +
+                "\n" +
+                "            <div class=\"boxBackButton\"  style=\"margin-left:300px; margin-top: 50px\" onclick=\"showSetting('setting_ec"+xx+"')\">\n" +
+                "                <span>Home</span>\n" +
+                "            </div>\n" +
+                "\n" +
+                "            <div class=\"boxBackButton\" id=\"nextBtn"+xx+"\" onclick=\"nextPage("+xx+")\"  style=\"margin-left:600px; margin-top: 50px\">\n" +
+                "                <span>Next</span>\n" +
+                "            </div>\n" +
+                "\n" +
+                "        </div>\n" +
+                "\n" +
+                "    </div>\n"
+            //setting pH
+            settingPage += "    <div style='display: none;' id=\"setting_ph" +xx+"\">\n" +
+                "        <div class=\"boxSetting\">\n" +
+                "        </div>\n" +
+                "        <div class=\"boxSettingInside\">\n" +
+                "                <div style=\"margin-right: 200px\">\n" +
+                "\n" +
+                "                <h1 >pH Settings</h1>\n" +
+                "                <div class=\"btn btn-secondary\" style=\"width: 180px\" onclick=\"setPh("+xx+")\">Set pH</div>\n" +
+                "                </div>\n" +
+                "\n" +
+                "            <div>\n" +
+                "                <div class=\"labels\" style=\"color: yellow\">Low</div>\n" +
+                "                <div class=\"row\">\n" +
+                "                    <div class=\"buttonSwitch\" style=\"margin-right: 16px; padding-bottom: 18px;\" onclick=\"minPhDown("+xx+")\">\n" +
+                "                        <span style=\"font-size: 42px;\">-</span>\n" +
+                "                    </div>\n" +
+                "                    <div class=\"buttonMenu\">\n" +
+                "                        <div style=\"font-size: 42px;\" id=\"ph_down"+xx+"\">0.00</div>\n" +
+                "                    </div>\n" +
+                "                    <div class=\"buttonSwitch\" style=\"margin-left: 16px;padding-bottom: 14px;\" onclick=\"plusPhDown("+xx+")\">\n" +
+                "                        <span style=\"font-size: 42px;\">+</span>\n" +
+                "                    </div>\n" +
+                "                </div>\n" +
+                "                <div style=\"line-height: 36px;\">&nbsp;</div>\n" +
+                "                <div class=\"labels\" style=\"color: cornflowerblue\">High</div>\n" +
+                "                <div class=\"row\">\n" +
+                "                    <div class=\"buttonSwitch\" style=\"margin-right: 16px; padding-bottom: 18px;\" onclick=\"minPhUp("+xx+")\">\n" +
+                "                        <span style=\"font-size: 42px;\">-</span>\n" +
+                "                    </div>\n" +
+                "                    <div class=\"buttonMenu\">\n" +
+                "                        <div style=\"font-size: 42px;\" id=\"ph_up"+xx+"\">0.00</div>\n" +
+                "                    </div>\n" +
+                "                    <div class=\"buttonSwitch\" style=\"margin-left: 16px;padding-bottom: 14px;\" onclick=\"plusPhUp("+xx+")\">\n" +
+                "                        <span style=\"font-size: 42px;\">+</span>\n" +
+                "                    </div>\n" +
+                "                </div>\n" +
+                "            </div>\n" +
+                "        </div>\n" +
+                "        <div class=\"boxBackButton \" onclick=\"showTab("+xx+")\">\n" +
+                "            <span>Back</span>\n" +
+                "        </div>\n" +
+                "\n" +
+                "    </div>"
+
+            //setting waterflow
+            settingPage += "<div  style='display: none;' id=\'setting_pump"+ xx +"\'>\n" +
+                "        <div class=\"boxSetting\">\n" +
+                "        </div>\n" +
+                "        <div class=\"boxSettingInside\">\n" +
+                "            <div style=\"margin-right: 100px\">\n" +
+                "\n" +
+                "                <h1 >Peristaltic <br> Pump</h1>\n" +
+                "                <div class=\"btn-secondary btn\" id=\"submitDuration\" style=\"width: 150px\" onclick=\"setValue('peristaltic_pump_duration',"+xx+")\">Set Dose Time</div>\n" +
+                "                <br>\n" +
+                "                <div class=\"btn-secondary btn mt-3\" id=\"submitPeriod\" onclick=\"setValue('peristaltic_pump_period',"+xx+")\"> Set Dose Interval</div>\n" +
+                "            </div>\n" +
+                "                <!--            <div class=\"buttonMenu\" style=\"margin-bottom: 36px;\">Set All DAP</div>-->\n" +
+                "      <div class=\"d-flex flex-column\">\n" +
+                "            <h3>Dose Time</h3>\n" +
+                "            <div class=\"row mt-1\" >\n" +
+                "\n" +
+                "            <div class=\"buttonSwitch\" style=\"margin-right: 16px; padding-bottom: 18px;\" onclick=\"minDuration("+xx+")\">\n" +
+                "                <span style=\"font-size: 32px;\">-</span>\n" +
+                "            </div>\n" +
+                "            <div class=\"buttonMenu\">\n" +
+                "                <div style=\"font-size: 32px;\" id=\"peristaltic_pump_duration"+xx+"\">0.00</div>\n" +
+                "            </div>\n" +
+                "            <div class=\"buttonSwitch\" style=\"margin-left: 16px;padding-bottom: 14px;\" onclick=\"plusDuration("+xx+")\">\n" +
+                "                <span style=\"font-size: 32px;\">+</span>\n" +
+                "            </div>\n" +
+                "                <div class=\" ml-2\">\n" +
+                "                    <h5>Sec</h5>\n" +
+                "                    <p>Max 60 Second</p>\n" +
+                "                </div>\n" +
+                "\n" +
+                "            </div>\n" +
+                "\n" +
+                "            <h3 class=\"mt-3\">Dose Interval</h3>\n" +
+                "\n" +
+                "            <div class=\"row mt-1\">\n" +
+                "\n" +
+                "            <div class=\"buttonSwitch\" style=\"margin-right: 16px; padding-bottom: 18px;\" onclick=\"minCheckingPeriod("+xx+")\">\n" +
+                "                <span style=\"font-size: 32px;\">-</span>\n" +
+                "            </div>\n" +
+                "            <div class=\"buttonMenu\">\n" +
+                "                <div style=\"font-size: 32px;\" id=\"peristaltic_pump_period"+xx+"\">0.00</div>\n" +
+                "            </div>\n" +
+                "            <div class=\"buttonSwitch\" style=\"margin-left: 16px;padding-bottom: 14px;\" onclick=\"plusCheckingPeriod("+xx+")\">\n" +
+                "                <span style=\"font-size: 32px;\">+</span>\n" +
+                "            </div>\n" +
+                "                <div class=\"d-flex flex-column ml-2\">\n" +
+                "                    <h5>Min</h5>\n" +
+                "                    <p>Max 60 minute</p>\n" +
+                "                </div>\n" +
+                "            </div>\n" +
+                "      </div>\n" +
+                "\n" +
+                "        </div>\n" +
+                "        <div class=\"boxBackButton \" onclick=\"showTab("+xx+")\">\n" +
+                "            <span>Back</span>\n" +
+                "        </div>\n" +
+                "    </div>\n"
+
+            //setting humidity
+            settingPage += "<div style='display: none;' id=\"setting_hum"+xx+"\">\n" +
+                "        <div class=\"boxSetting\">\n" +
+                "        </div>\n" +
+                "        <div class=\"boxSettingInside\" >\n" +
+                "            <div>\n" +
+                "\n" +
+                "                <h1 style=\"margin-right: 100px\">Humidity</h1>\n" +
+                "                <div class=\"btn-secondary btn\" id=\"submitHumidity\" onclick=\"setValue('fan_humidity',"+xx+")\">Set Humidity</div>\n" +
+                "            </div>\n" +
+                "        <div class=\"d-flex flex-column\">\n" +
+                "            <h3 class=\"mt-2\">Humidity</h3>\n" +
+                "           <div> <!--Humidity-->\n" +
+                "               <h4 style=\"\">Value</h4>\n" +
+                "\n" +
+                "            <div class=\"row mt-1\">\n" +
+                "\n" +
+                "                <div class=\"buttonSwitch\" style=\"margin-right: 16px; padding-bottom: 18px;\" onclick=\"minHumidity("+xx+")\">\n" +
+                "                    <span style=\"font-size: 32px;\">-</span>\n" +
+                "                </div>\n" +
+                "                <div class=\"buttonMenu\">\n" +
+                "                    <div style=\"font-size: 32px;\" id=\"fan_humidity"+xx+"\">0.00</div>\n" +
+                "                </div>\n" +
+                "                <div class=\"buttonSwitch\" style=\"margin-left: 16px;padding-bottom: 14px;\" onclick=\"plusHumidity("+xx+")\">\n" +
+                "                    <span style=\"font-size: 32px;\">+</span>\n" +
+                "                </div>\n" +
+                "            </div>\n" +
+                "\n" +
+                "            </div>\n" +
+                "\n" +
+                "        </div>\n" +
+                "        </div>\n" +
+                "        <div class=\"boxBackButton\" onclick=\"showTab("+xx+")\">\n" +
+                "            <span>Back</span>\n" +
+                "        </div>\n" +
+                "    </div>\n"
+
+            //setting air temp                         id=\'setting_pump"+ xx +"\'
+            settingPage += "    <div style='display: none' id='setting_air_temp"+xx+"'>\n" +
+                "        <div class=\"boxSetting\"></div>\n" +
+                "        <div class=\"boxSettingInside\">\n" +
+                "            <div style=\"margin-right: 200px\">\n" +
+                "                <h3 class=\"mt-4\">Air Temp</h3>\n" +
+                "                <div class=\"btn-secondary btn\" id=\"submitAirTemp\" onclick=\"setAirTemp("+xx+")\">Set Air Temperature</div>\n" +
+                "            </div>\n" +
+                "            <div> <!--Air Temp-->\n" +
+                "\n" +
+                "\n" +
+                "                <h4>Lowest</h4>\n" +
+                "                <div class=\"row mt-1\">\n" +
+                "\n" +
+                "                    <div class=\"buttonSwitch\" style=\"margin-right: 16px; padding-bottom: 18px;\" onclick=\"minAirTemp('min',"+xx+")\">\n" +
+                "                        <span style=\"font-size: 32px;\">-</span>\n" +
+                "                    </div>\n" +
+                "                    <div class=\"buttonMenu\">\n" +
+                "                        <div style=\"font-size: 32px;\" id=\"fan_air_temp_min"+xx+"\">0.00</div>\n" +
+                "                    </div>\n" +
+                "                    <div class=\"buttonSwitch\" style=\"margin-left: 16px;padding-bottom: 14px;\" onclick=\"plusAirTemp('min',"+xx+")\">\n" +
+                "                        <span style=\"font-size: 32px;\">+</span>\n" +
+                "                    </div>\n" +
+                "                </div>\n" +
+                "\n" +
+                "                <h4>Highest</h4>\n" +
+                "                <div class=\"row mt-1\">\n" +
+                "\n" +
+                "                    <div class=\"buttonSwitch\" style=\"margin-right: 16px; padding-bottom: 18px;\" onclick=\"minAirTemp('max',"+xx+")\">\n" +
+                "                        <span style=\"font-size: 32px;\">-</span>\n" +
+                "                    </div>\n" +
+                "                    <div class=\"buttonMenu\">\n" +
+                "                        <div style=\"font-size: 32px;\" id=\"fan_air_temp_max"+xx+"\">0.00</div>\n" +
+                "                    </div>\n" +
+                "                    <div class=\"buttonSwitch\" style=\"margin-left: 16px;padding-bottom: 14px;\" onclick=\"plusAirTemp('max',"+xx+")\">\n" +
+                "                        <span style=\"font-size: 32px;\">+</span>\n" +
+                "                    </div>\n" +
+                "                </div>\n" +
+                "\n" +
+                "            </div>\n" +
+                "        </div>\n" +
+                "                <div class=\"boxBackButton\" style=\"margin-top: 100px\" onclick=\"showTab("+xx+")\">\n" +
+                "            <span>Back</span>\n" +
+                "        </div>\n" +
+                "    </div>\n"
+
+
+
+
+        }
+
+        document.getElementById('setting_page').innerHTML = settingPage
+        document.getElementById('dropdownController').innerHTML = dropdown
+
+
+
+    }
+    let tabIdx = 0
+
+    function showResponse(responsex) {
+            // var container = document.getElementById('response-container')
+
+            let dashboardPage = ""
+            for(let k=0;k < resArray.length;k++) {
+                items2.push(resArray[k]['dap'])
+
+                const xx = k + 1
+                const dsp = tabIdx === xx ? "block" : "none";
+
+                dashboardPage += "<div id='controller" + xx + "' class='tab' style='display: " + dsp + "' >" + "<div id=\"dashboard" + xx + "\" >\n"
+
+                //other
+                dashboardPage +="        <div class=\"box1\">\n" +
+                    "        </div>\n" +
+                    "        <div class=\"boxhumidity\"></div>\n" +
+                    "        <div class=\"boxfan\"></div>\n" +
+                    "        <div class=\"box1inside\">\n" +
+                    "            <div class=\"title\">Temperature <img src=\"images/settings_icon.png\" style=\"width: 25px; height: 25px; margin-left: 25px\" onclick=\"showSetting('setting_air_temp"+ xx +"')\"></div>\n" +
+                    "            <div class=\"subtitle\">Water</div>\n" +
+                    "            <div class=\"currentValue\"><span id=\"current_water_temp\">" + responsex[k].water_temperature.toFixed(2) + "</span> &deg;C</div>\n" +
+                    "            <div class=\"subtitle\">Air (<span id=\"sf_config_air_temp_down_display\">" + `${parseFloat(responsex[k].sf_config_fan_air_temp_min).toFixed(2)}` + "</span> -\n" +
+                    "                <span id=\"sf_config_air_temp_up_display\">" + `${parseFloat(responsex[k].sf_config_fan_air_temp_max).toFixed(2)}` + "</span>) </div>\n" +
+                    "            <div class=\"currentValue\"><span id=\"current_air_temp\">" + responsex[k].air_temperature.toFixed(2) + "</span> &deg;C</div>\n" +
+                    "            <div class=\" mt-4\" >Humidity (<span>" + responsex[k].sf_config_fan_humidity + "</span>) <img src=\"images/settings_icon.png\" style=\"width: 25px; height: 25px; margin-left: 10px\" onclick=\"showSetting('setting_hum"+xx+"')\">\n" +
+                    "            </div>\n" +
+                    "            <div class=\"currentValue\"><span id=\"current_humidity\">" + responsex[k].humidity.toFixed(2) + "</span> %</div>\n" +
+                    "            <div class=\"row mt-4\" style=\"margin-left: 0; padding: 0;\">\n" +
+                    "                <div class=\"col-6 p-0\">\n" +
+                    "                    <div class=\"subtitle\"><span>Fan</span></div>\n" +
+                    "                    <div class=\"labels\"><span id=\"switch_fan\">Off</span></div>\n" +
+                    "                </div>\n" +
+                    "                <div class=\"col-6 p-0\">\n" +
+                    "                    <div class=\"subtitle\"><span>Heater</span></div>\n" +
+                    "                    <div class=\"labels\"><span id=\"switch_heater\">Off</span></div>\n" +
+                    "                </div>\n" +
+                    "            </div>\n" +
+                    "        </div>\n" +
+                    "        <div class=\"box3\">\n" +
+                    "        </div>\n" +
+                    "        <div class=\"box3inside row\" style=\"margin-left: 0;\">\n" +
+                    "            <div class=\"subBox\">\n" +
+                    "                <div class=\"title2\">DateTime</div>\n" +
+                    "                <div class=\"date\"><span id=\"date\">" + responsex[k].date_now + "</span></div>\n" +
+                    "                <div class=\"labels\"><span id=\"time\">" + responsex[k].time_now + "</span></div>\n" +
+                    "            </div>\n" +
+                    "            <div class=\"subBox\">\n" +
+                    "                <div class=\"title2\">DAP</div>\n" +
+                    "                <div class=\"date\"><span id=\"dap\">" + responsex[k].dap_days + "</span> Days</div>\n" +
+                    "                <div class=\"labels\"><span id=\"dap_time\">" + responsex[k].dap_time + "</span></div>\n" +
+                    "            </div>\n" +
+                    "            <div onclick=\"showSetting('setting_date"+xx+"')\" class=\"subBox\"\n" +
+                    "                 style=\"display: flex; justify-content: center; align-items: center; align-content: center;\">\n" +
+                    "                <img src=\"images/settings_icon.png\" style=\"width: 25px; height: 25px; margin-bottom: 100px; margin-left: 140px\" >\n" +
+                    "            </div>\n" +
+                    "        </div>\n" +
+                    "        <div class=\"box4 \">\n" +
+                    "        </div>\n" +
+                    "        <div class=\"box4inside row \" style=\"margin-left: 0; \">\n" +
+                    "            <div class=\"subBox\">\n" +
+                    "                <div class=\"title2\">EC"
+
+
+                let dapValue = responsex[k].dap
+                let ecMode = responsex[k].ec_mode
+
+                if (ecMode === 'all') {
+                    dashboardPage += " (<span id='sf_config_ec_display'>" + `${parseFloat(responsex[k].sf_config_ec).toFixed(2)}` + "</span>)"
+
+                }
+                if (ecMode === 'single') {
+                    dashboardPage += " (<span id='sf_config_ec_display'>" + dapValue[responsex[k].dap_days] + "</span>)"
+
+                }
+
+
+                dashboardPage += "<img src=\"images/settings_icon.png\" style=\"width: 25px; height: 25px; margin-left: 40px\" onclick=\"showSetting('setting_ec"+xx+"')\"></div>\n" +
+                    "                <div class=\"currentValue\"><span id=\"current_ec\">" + responsex[k].ec.toFixed(2) + "</span></div>\n" +
+                    "                <div class=\"subtitle\"><span>A Nutrition</span></div>\n" +
+                    "                <div class=\"labels\"><span id=\"switch_ec_a\">Off</span></div>\n" +
+                    "                <div class=\"subtitle\"><span>B Nutrition</span></div>\n" +
+                    "                <div class=\"labels\"><span id=\"switch_ec_b\">Off</span></div>\n" +
+                    "            </div>\n" +
+                    "        </div>\n" +
+                    "        <div class=\"box5\">\n" +
+                    "        </div>\n" +
+                    "        <div class=\"box5inside row \" style=\"margin-left: 0; \">\n" +
+                    "            <div class=\"subBox\">\n" +
+                    "                <div class=\"title2\">pH (<span id=\"sf_config_ph_down_display\">" + `${parseFloat(responsex[k].sf_config_ph_down).toFixed(2)}` + "</span> - <span\n" +
+                    "                        id=\"sf_config_ph_up_display\">" + `${parseFloat(responsex[k].sf_config_ph_up).toFixed(2)}` + "</span>)<img src=\"images/settings_icon.png\" style=\"width: 25px; height: 25px; margin-left: 3px\" onclick=\"showSetting('setting_ph"+xx+"')\">\n" +
+                    "                </div>\n" +
+                    "                <div class=\"currentValue\"><span id=\"current_ph\">" + responsex[k].ph.toFixed(2) + "</span></div>\n" +
+                    "                <div class=\"subtitle\"><span>pH Up</span></div>\n" +
+                    "                <div class=\"labels\"><span id=\"switch_ph_up\">Off</span></div>\n" +
+                    "                <div class=\"subtitle\"><span>pH Down</span></div>\n" +
+                    "                <div class=\"labels\"><span id=\"switch_ph_down\">Off</span></div>\n" +
+                    "            </div>\n" +
+                    "        </div>\n" +
+                    "        <div class=\"box6\">\n" +
+                    "        </div>\n" +
+                    "        <div class=\"box6inside row \" style=\"margin-left: 0;\">\n" +
+                    "            <div class=\"subBox\">\n" +
+                    "                <div class=\"title2\">Waterflow <img src=\"images/settings_icon.png\" style=\"width: 25px; height: 25px; margin-left: 35px\" onclick=\"showSetting('setting_pump"+ xx +"')\"></div>\n" +
+                    "                <div class=\"currentValue\"><span id=\"current_wtf\">" + responsex[k].water_temperature.toFixed(2) + "</span></div>\n" +
+                    "                <div class=\"subtitle\"><span>Pump 1</span></div>\n" +
+                    "                <div class=\"labels\"><span id=\"switch_pump_1\">Off</span></div>\n" +
+                    "                <div class=\"subtitle\"><span>Pump 2</span></div>\n" +
+                    "                <div class=\"labels\"><span id=\"switch_pump_2\">Off</span></div>\n" +
+                    "            </div>\n" +
+                    "        </div>\n" +
+                    "        <div class=\"boxBackButton\" style=\"margin-top: 100px\" onclick=\"showArrayController();\">\n" +
+                    "            <span>Back</span>\n" +
+                    "        </div>\n" +
+                    "\n" +
+                    "    </div> </div>\n"
+
+
+
+            }
+            document.getElementById('tabController').innerHTML = dashboardPage
+
+
+
+
+            let f = ""
+            for (let x = 0;x < resArray.length;x++){
+
+                const xxx = x+1
+                let ecMode = responsex[x].ec_mode
+
+                let dapValue = responsex[x].dap
+                // f += "    <div class=\"glass\ mt-5\ ml-3\" onclick=\"showDisplay('dashboard1')\" style=\"height: 200px; width: 360px;\ border-radius: 20px;\" >\n" +
+                //     "        <b style=\"font-size: 20px\" class=\"mt-4 ml-2\">Controller "+ (x+1) + "</b>\n" +
+                //     "        <p class=\"ml-2\" id=\"status_controller\">Status: Active <b class=\"status\"></b></p>\n" +
+                //     "        <div class=\"d-flex flex-row  justify-content-around\">\n" +
+                //     "                <p>DAP <br> <b>"+ responsex[x].dap_days +" Days</b> </p>\n" +
+                //     "                <p id='contEc'>EC("+ responsex[x].sf_config_ec.toFixed(2) +") <br> <b>" + responsex[x].ec.toFixed(2) + "</b> </p>\n" +
+                //     "                <p>pH("+ responsex[x].sf_config_ph_down.toFixed(1) + "-" + responsex[x].sf_config_ph_up.toFixed(1) +") <br> <b>"+ responsex[x].ph.toFixed(2) + "</b> </p>\n" +
+                //     "                <p>Humidity <br> <b>"+ responsex[x].humidity.toFixed(2) +"</b> </p>\n" +
+                //     "        </div>\n" +
+                //     "        <div class=\"d-flex flex-row  justify-content-around\">\n" +
+                //     "                <p>Water Temp <br> <b>"+ responsex[x].water_temperature.toFixed(2) +"</b> </p>\n" +
+                //     "                <p>Air Temp <br> <b>"+ responsex[x].air_temperature.toFixed(2) +"</b> </p>\n" +
+                //     "                <p>Pump 1 <br> <b>Off</b> </p>\n" +
+                //     "                <p>Pump 2 <br> <b>On</b> </p>\n" +
+                //     "        </div>\n" +
+                //     "    </div>\n"
+                f += "    <div class=\"glass mx-3 mt-5 \" onclick=\"showTab("+xxx+");\" style=\"height: 400px; width: 400px\" >\n" +
+                    "        <div class=\"d-flex flex-row mt-5 justify-content-around\">\n" +
+                    "            <div class=\"\">\n" +
+                    "\n" +
+                    "            <b style=\"font-size: 20px;\" >Controller"+ xxx + "</b>\n" +
+                    "            <p class=\"\" id=\"status_controller\">Status: Active <b class=\"status\"></b></p>\n" +
+                    "            </div>\n" +
+                    "\n" +
+                    "            <p>DAP <br> <b>"+ responsex[x].dap_days +" Days</b> </p>\n" +
+                    "\n" +
+                    "        </div>\n" +
+                    "                <hr style=\"height:2px;border-width:0;background-color: white\">\n" +
+                    "        <div class=\"d-flex flex-column  justify-content-around\">\n" +
+                    "\n" +
+                    "            <div class=\"d-flex flex-row ml-5\" >\n";
+                if(ecMode === 'all'){
+                    f+=  "<p>EC("+ responsex[x].sf_config_ec.toFixed(2) +") <br> <b>" + responsex[x].ec.toFixed(2) + "</b> </p>\n";
+
+                }
+                if (ecMode === 'single') {
+                    f+=  "<p>EC("+ dapValue[responsex[x].dap_days] +") <br> <b>" + responsex[x].ec.toFixed(2) + "</b> </p>\n";
+
+                }
+                    f += "<p style=\"margin-left: 150px\">pH("+ `${parseFloat(responsex[x].sf_config_ph_down).toFixed(2)}` + "-" + `${parseFloat(responsex[x].sf_config_ph_up).toFixed(2)}` +") <br> <b>"+ responsex[x].ph.toFixed(2) + "</b> </p>\n" +
+                    "            </div>\n" +
+                    "            <div class=\"d-flex flex-row  ml-5\" >\n" +
+                    "                <p>Humidity <br> <b>"+ responsex[x].humidity.toFixed(2) +"</b> </p>\n" +
+                    "                <p style=\"margin-left: 148px\">Water Temp <br> <b>"+ responsex[x].water_temperature.toFixed(2) +"</b> </p>\n" +
+                    "\n" +
+                    "            </div>\n" +
+                    "            <div class=\"d-flex flex-row  ml-5\" >\n" +
+                    "                     <p>Air Temp <br> <b>"+ responsex[x].air_temperature.toFixed(2) +"</b> </p>\n" +
+                    "                    <p style=\"margin-left: 148px\">Pump 2 <br> <b>On</b> </p>\n" +
+                    "            </div>\n" +
+                    "        </div>\n" +
+                    "\n" +
+                    "    </div>\n"
+
+            }
+            document.getElementById('listController').innerHTML = f
+    }
+function showArrayController(){
+        tabIdx = 0
+        showDisplay('array_controller')
+        const tabs = document.getElementsByClassName('tab');
+      for (let i = 0; i < tabs.length; i++) {
+        tabs[i].style.display = 'none'
+      }
+    }
+function showSetting(settingId){
+        //alert(settingId)
+        tabIdx = 0;
+        showDisplay(settingId)
+        //document.getElementById(settingId).style.display = 'block'
+            const tabs = document.getElementsByClassName('tab');
+      for (let i = 0; i < tabs.length; i++) {
+        tabs[i].style.display = 'none'
+      }
+}
+    setInterval(() => {
+        pywebview.api.getCurrentValue().then(showResponse)
+    }, 1000)
+    setTimeout(() => {
+        pywebview.api.getCurrentValue().then(putArray)
+    }, 1000)
+
+    function showInitialResponse(response) {
+        window.createNotification({
+            closeOnClick: true,
+            displayCloseButton: false,
+            positionClass: "nfc-top-center",
+            showDuration: 3000,
+            theme: "none"
+        })({
+            title: "Info",
+            message: `${JSON.stringify(response)}`
+        });
+        document.getElementById('ec').innerText = `${parseFloat(response.sf_config_ec).toFixed(2)}`
+    }
+
+    function initialize() {
+
+        pywebview.api.getInitial().then(showInitialResponse)
+
+    }
+
+
+</script>
+
+<!-- script for generating content in setting Ec Single pages -->
+  <script>
+      //let items = [0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0]
+
+
+
+      var itemDAP = []
+
+
+      // for (let item = 0; item<4;item++){
+      //     items2.push(JSON.stringify(resArray[item]['dap']))
+      // }//
+
+
+    var itemsPerPage = 4; // Number of items per page
+    var currentPage = 1; // Current page number
+
+    //var totalPages = Math.ceil(items.length / itemsPerPage); // Total number of pages
+
+      function addItem(item,index) {
+        let items = items2[index-1]
+
+         //alert(JSON.stringify(resArray[2]['dap']))
+
+        //alert(JSON.stringify(display));
+          items.push(item); // Add the new item to the items array
+          totalPages = Math.ceil(items.length / itemsPerPage); // Update the total number of pages
+          generatePages(index); // Regenerate the pages with the updated items
+          showPage(currentPage,index); // Show the current page
+
+    }
+      function minItem(index) {
+        items = items2[index-1]
+
+          submitDap(index)
+          items.pop(); // Add the new item to the items array
+          totalPages = Math.ceil(items.length / itemsPerPage); // Update the total number of pages
+          generatePages(index); // Regenerate the pages with the updated items
+          showPage(currentPage,index); // Show the current page
+
+    }
+    function submitDap(index){
+        items = items2[index-1]
+
+        for(let k=0; k <items.length;k++){
+            let text = document.getElementById("ec_hst"+ index +"-" + (k))
+            let value = parseFloat(text.innerText)
+            items[k] = value
+            if (value > 0) {
+                itemDAP[k] = items[k];
+            }
+          }
+
+        pywebview.api.setRedisValue("dap", itemDAP,"/device-00"+index).then(showSetValueResponse)
+    }
+
+
+    function generatePageContent(page,index) {
+        items = items2[index-1]
+
+      var start = (page - 1) * itemsPerPage;
+      var end = Math.min(start + itemsPerPage, items.length);
+      var itemsToShow = items.slice(start, end);
+      //  alert(items)
+
+      var pageContent = "<div class=\"page\" id=\"page" + page + "-" + index + "\">";
+      for (var i = 0; i < itemsToShow.length; i++) {
+        pageContent += "<div class=\"row mt-4\">\n" +
+          "<p class='m-auto' > Tanaman HST" + (start + i) + "</p>\n" +
+          "<div class=\"buttonSwitch\" style=\"margin-right: 16px; padding-bottom: 18px;\" onclick=\"minEcSingle(" + (start + i) + ","+index+")\">\n" +
+          "    <span style=\"font-size: 32px;\">-</span>\n" +
+          "</div>\n" +
+          "<div class=\"buttonMenu\">\n" +
+          "    <div style=\"font-size: 32px;\" id=\"ec_hst" + index+ "-" + (start + i) + "\">" + items[start + i] + "</div>\n" +
+          "</div>\n" +
+          "<div class=\"buttonSwitch\" style=\"margin-left: 16px;padding-bottom: 14px;\" onclick=\"plusEcSingle(" + (start + i) + ","+index+")\">\n" +
+          "    <span style=\"font-size: 32px;\">+</span>\n" +
+          "</div>\n" +
+          "</div>\n";
+      }
+      pageContent += "</div>";
+      return pageContent;
+    }
+
+    function generatePages(index) {
+        items = items2[index-1]
+
+        var totalPages = Math.ceil(items.length / itemsPerPage); // Total number of pages
+
+      for(let l=0; l<resArray.length;l++) {
+          const xx = l + 1
+          const pageContainer = document.getElementById("ecSingle" + xx);
+          pageContainer.innerText = "";
+
+
+          for (var page = 1; page <= totalPages; page++) {
+              var pageContent = generatePageContent(page,xx);
+              pageContainer.innerHTML += pageContent;
+
+
+          }
+          showPage(currentPage,index);
+      }
+
+    }
+
+    function showPage(page,index) {
+        items = items2[index-1]
+
+        var totalPages = Math.ceil(items.length / itemsPerPage); // Total number of pages
+
+      var pages = document.getElementsByClassName("page");
+      for (var i = 0; i < pages.length; i++) {
+        pages[i].classList.remove("current-page");
+      }
+
+      var currentPageElement = document.getElementById("page" + page + "-" +index);
+      currentPageElement.classList.add("current-page");
+
+       var previousBtn = document.getElementById("previousBtn"+index);
+       var nextBtn = document.getElementById("nextBtn"+index);
+
+      switch (page){
+            case 1:
+                previousBtn.style.visibility = "hidden";
+                nextBtn.style.visibility = "visible";
+
+                break
+            case totalPages:
+                previousBtn.style.visibility = "visible";
+
+                nextBtn.style.visibility = "hidden";
+                break
+
+            default:
+                nextBtn.style.visibility = "visible";
+                previousBtn.style.visibility = "visible";
+
+        }
+
+
+    }
+
+    function nextPage(index) {
+        items = items2[index-1]
+
+        var totalPages = Math.ceil(items.length / itemsPerPage); // Total number of pages
+
+      if (currentPage < totalPages) {
+        currentPage++;
+        showPage(currentPage,index);
+      }
+    }
+
+    function previousPage(index) {
+      if (currentPage > 1) {
+        currentPage--;
+        showPage(currentPage,index);
+      }
+    }
+
+
+  </script>
+<!--end script for ec Single-->
+<script>
+    function showTab(tabId) {
+        //alert(tabId)
+        const idName = 'controller' + tabId
+        const idDrop = 'dropdown' + tabId
+        const tabs = document.getElementsByClassName('tab');
+      for (let i = 0; i < tabs.length; i++) {
+        tabs[i].style.display = 'none'
+      }
+      const tabToShow = document.getElementById(idName);
+      const dropToShow = document.getElementById(idDrop);
+      dropToShow.style.display = 'block'
+      tabToShow.style.display = 'block'
+            tabIdx = tabId
+        if(tabId === 0){
+            document.getElementById('array_controller').style.display = 'block'
+
+        }
+        else {
+            document.getElementById('array_controller').style.display = 'none'
+
+        }
+            showDisplay('dashboard'+tabId)
+    }
+
+</script>
+</body>
+</html>

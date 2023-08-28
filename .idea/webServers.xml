@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="WebServers">
+    <option name="servers">
+      <webServer id="9393487a-f51b-4863-9965-347efeeef988" name="smartfarm-orangepi">
+        <fileTransfer rootFolder="/home/smartfarm/script" accessType="SFTP" host="192.168.0.101" port="22" sshConfigId="1eff415c-b5c6-4f89-a0c8-bcd4acf89ea0" sshConfig="smartfarm@192.168.0.101:22 password">
+          <advancedOptions>
+            <advancedOptions dataProtectionLevel="Private" keepAliveTimeout="0" passiveMode="true" shareSSLContext="true" />
+          </advancedOptions>
+        </fileTransfer>
+      </webServer>
+    </option>
+  </component>
+</project>

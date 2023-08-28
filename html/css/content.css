@@ -1,0 +1,538 @@
+body {
+    background: #144460 url("../images/background.png") no-repeat fixed center center;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+    color: #ffffff;
+    font-family: Arial, Helvetica, sans-serif;
+    padding: 16px;
+    cursor: pointer;
+    /*width: 800px;*/
+    /*height: 480px;*/
+    -webkit-user-select: none; /* Safari */
+  -ms-user-select: none; /* IE 10 and IE 11 */
+  user-select: none;
+}
+#response-container {
+    display: none;
+    padding: 3rem;
+    margin: 3rem 5rem;
+    font-size: 120%;
+    border: 5px dashed #ccc;
+}
+
+label {
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+}
+
+button {
+    font-size: 100%;
+    padding: 0.5rem;
+    margin: 0.3rem;
+    text-transform: uppercase;
+}
+
+.header {
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.title {
+    font-weight: bold;
+    margin-bottom: 16px;
+    font-size: 18px;
+}
+
+.date{
+    font-weight: bold;
+    margin-bottom: 16px;
+    font-size: 25px;
+}
+
+.title2 {
+    font-weight: lighter;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.labels {
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 16px;
+}
+
+.subtitle {
+    font-weight: lighter;
+    font-size: 16px;
+    margin-top: 8px;
+}
+
+.currentValue {
+    margin-top: -8px;
+    padding: 0;
+    font-weight: bold;
+    font-size: 40px;
+}
+
+.box1 {
+    position: absolute;
+    margin-top: 8px;
+    padding: 16px;
+    width: 200px;
+    height: 220px;
+    background-color: white;
+    opacity: 0.2;
+    color: white;
+    border-radius: 16px;
+}
+.boxhumidity{
+    position: absolute;
+    margin-top: 240px;
+    padding: 16px;
+    width: 200px;
+    height: 100px;
+    background-color: white;
+    opacity: 0.2;
+    color: white;
+    border-radius: 16px;
+}
+.boxfan{
+        position: absolute;
+    margin-top: 350px;
+    padding: 16px;
+    width: 200px;
+    height: 60px;
+    background-color: white;
+    opacity: 0.2;
+    color: white;
+    border-radius: 16px;
+}
+
+.font-logo{
+    color: #FFF;
+    font-family: Montserrat;
+    font-size: 20px;
+    font-style: normal;
+    font-weight: 800;
+    line-height: normal;
+}
+
+
+.box1inside {
+    position: absolute;
+    margin-top: 8px;
+    padding: 16px;
+    width: 200px;
+    height: 400px;
+    border-radius: 16px;
+}
+
+.box2 {
+    position: absolute;
+    top: 318px;
+    margin-top: 16px;
+    padding: 16px;
+    width: 200px;
+    height: 130px;
+    background-color: white;
+    opacity: 0.2;
+    color: white;
+    border-radius: 16px;
+}
+
+.box2inside {
+    top: 318px;
+    position: absolute;
+    margin-top: 16px;
+    padding: 16px;
+    width: 200px;
+    height: 130px;
+    border-radius: 16px;
+}
+
+.box3 {
+    position: absolute;
+    left: 234px;
+    margin-top: 8px;
+    padding: 16px;
+    width: 550px;
+    height: 140px;
+    background-color: white;
+    opacity: 0.2;
+    color: white;
+    border-radius: 16px;
+}
+
+.box3inside {
+    position: absolute;
+    left: 234px;
+    margin-top: 16px;
+    padding: 16px;
+    width: 560px;
+    height: 140px;
+    border-radius: 16px;
+}
+.box4 {
+    position: absolute;
+    left: 234px;
+    top: 230px;
+    margin-top: 8px;
+    padding: 16px;
+    width: 170px;
+    height: 240px;
+    background-color: white;
+    opacity: 0.2;
+    color: white;
+    border-radius: 16px;
+}
+
+.box4inside {
+    position: absolute;
+    left: 234px;
+    top: 220px;
+    margin-top: 16px;
+    padding: 16px;
+    width: 170px;
+    height: 226px;
+    border-radius: 16px;
+}
+.box5 {
+    position: absolute;
+    left: 422px;
+    top: 230px;
+    margin-top: 8px;
+    padding: 16px;
+    width: 170px;
+    height: 240px;
+    background-color: white;
+    opacity: 0.2;
+    color: white;
+    border-radius: 16px;
+}
+
+.box5inside {
+    position: absolute;
+    left: 422px;
+    top: 220px;
+    margin-top: 16px;
+    padding: 16px;
+    width: 170px;
+    height: 226px;
+    border-radius: 16px;
+}
+.box6 {
+    position: absolute;
+    left: 610px;
+    top: 230px;
+    margin-top: 8px;
+    padding: 16px;
+    width: 170px;
+    height: 240px;
+    background-color: white;
+    opacity: 0.2;
+    color: white;
+    border-radius: 16px;
+}
+
+.box6inside {
+    position: absolute;
+    left: 610px;
+    top: 220px;
+    margin-top: 16px;
+    padding: 16px;
+    width: 170px;
+    height: 226px;
+    border-radius: 16px;
+}
+.boxSettings1 {
+    position: absolute;
+    margin-top: 8px;
+    padding: 16px;
+    width: 240px;
+    height: 150px;
+    background-color: white;
+    opacity: 0.2;
+    color: white;
+    border-radius: 16px;
+}
+
+.boxSettings1inside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    position: absolute;
+    margin-top: 8px;
+    padding-top: 16px;
+    width: 240px;
+    height: 150px;
+    border-radius: 16px;
+    text-align: center;
+
+}
+.boxSettings2 {
+    position: absolute;
+    left: 278px;
+    margin-top: 8px;
+    padding: 16px;
+    width: 240px;
+    height: 150px;
+    background-color: white;
+    opacity: 0.2;
+    color: white;
+    border-radius: 16px;
+}
+
+.boxSettings2inside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    position: absolute;
+    left: 278px;
+    margin-top: 8px;
+    padding-top: 16px;
+    width: 240px;
+    height: 150px;
+    border-radius: 16px;
+    text-align: center;
+}
+.boxSettings3 {
+    position: absolute;
+    left: 540px;
+    margin-top: 8px;
+    padding: 16px;
+    width: 240px;
+    height: 150px;
+    background-color: white;
+    opacity: 0.2;
+    color: white;
+    border-radius: 16px;
+}
+
+.boxSettings3inside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    position: absolute;
+    left: 540px;
+    margin-top: 8px;
+    padding-top: 16px;
+    width: 240px;
+    height: 150px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+.boxSettings4 {
+    position: absolute;
+    top: 240px;
+    margin-top: 8px;
+    padding: 16px;
+    width: 240px;
+    height: 150px;
+    background-color: white;
+    opacity: 0.2;
+    color: white;
+    border-radius: 16px;
+}
+
+.boxSettings4inside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    position: absolute;
+    top: 240px;
+    margin-top: 8px;
+    padding-top: 16px;
+    width: 240px;
+    height: 150px;
+    border-radius: 16px;
+    text-align: center;
+}
+.boxSettings5 {
+    position: absolute;
+    left: 278px;
+    top: 240px;
+    margin-top: 8px;
+    padding: 16px;
+    width: 240px;
+    height: 150px;
+    background-color: white;
+    opacity: 0.2;
+    color: white;
+    border-radius: 16px;
+}
+
+.boxSettings5inside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    position: absolute;
+    left: 278px;
+    top: 240px;
+    margin-top: 8px;
+    padding-top: 16px;
+    width: 240px;
+    height: 150px;
+    border-radius: 16px;
+    text-align: center;
+}
+.boxSettings6 {
+    position: absolute;
+    left: 540px;
+    top: 240px;
+    margin-top: 8px;
+    padding: 16px;
+    width: 240px;
+    height: 150px;
+    background-color: white;
+    opacity: 0.2;
+    color: white;
+    border-radius: 16px;
+}
+
+.boxSettings6inside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    position: absolute;
+    left: 540px;
+    top: 240px;
+    margin-top: 8px;
+    padding-top: 16px;
+    width: 240px;
+    height: 150px;
+    border-radius: 16px;
+    text-align: center;
+}
+
+
+.boxSetting {
+    position: absolute;
+    margin-top: 8px;
+    padding: 16px;
+    width: 764px;
+    height: 320px;
+    background-color: white;
+    opacity: 0.2;
+    color: white;
+    border-radius: 16px;
+}
+
+.boxSettingInside {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    position: absolute;
+    margin-top: 8px;
+    padding: 16px;
+    width: 764px;
+    height: 320px;
+    border-radius: 16px;
+
+}
+.glassDate{
+    color: white;
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+
+}
+
+.boxBackButton {
+    position: absolute;
+    top: 410px;
+    padding: 14px;
+    width: 180px;
+    height: 40px;
+    background-color: transparent;
+    border: #ffffff 2px solid;
+    color: white;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.boxSubmitButton {
+    position: absolute;
+    top: 410px;
+    right: 20px;
+    padding: 14px;
+    width: 180px;
+    height: 40px;
+    background-color: transparent;
+    border: #ffffff 2px solid;
+    color: #ffffff;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.buttonMenu {
+
+    display: flex;
+  justify-content: center;
+  align-items: center;
+    padding: 14px;
+    width: 180px;
+    height: 54px;
+    background-color: transparent;
+    border: white 2px solid;
+    color: white;
+    border-radius: 16px;
+    text-align: center;
+
+}
+.buttonSwitch {
+    display: flex;
+  justify-content: center;
+  align-items: center;
+    padding: 14px;
+    width: 60px;
+    height: 54px;
+    background-color: transparent;
+    border: white 2px solid;
+    color: white;
+    border-radius: 16px;
+    text-align: center;
+}
+.subBox {
+    width: 170px;
+    /*margin-left: 16px;*/
+    /*padding: 8px;*/
+    /*background-color: darkblue;*/
+}
+
+.glass{
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    border-radius: 5px;
+
+}
+.status{
+  height: 15px;
+  width: 15px;
+  background-color: #00FF0A;
+  border-radius: 50%;
+    margin-left: 12px;
+    margin-right: 35px;
+  display: inline-block;
+}
+.btn.btn-secondary{
+   border: white 2px solid;
+    color: white;
+    border-radius: 10px;
+
+
+}
